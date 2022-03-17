@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#1E90FF</color>
+    <color name="colorPrimaryDark">#000</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="blue_dark">#1e509f</color>
+    <color name="blue">#1E90FF</color>
+    <color name="blue_lite">#77B4DBFF</color>
+
+    <color name="red">#FF0102</color>
+    <color name="red_dark">#aa0000</color>
+
+    <color name="white_l">#ddffffff</color>
+    <color name="gray_lite">#aaa</color>
+    <color name="white_off">#ddd</color>
+    <color name="transparent">#00000000</color>
+    <color name="white_2">#eee</color>
+    <color name="gray">#888</color>
+    <color name="gray_dark">#444</color>
+    <color name="line">#aaa</color>
+    <color name="green">#4CAF50</color>
+    <color name="green_lite">#9AFA9E</color>
+    <color name="red_cart">#F44336</color>
+    <color name="yellow">#FFC107</color>
+    <color name="icon">#ddffffff</color>
+
+    <color name="status_waiting">#ffcc00</color>
+    <color name="status_active">#3399ff</color>
+    <color name="status_delivered">#00b33c</color>
+    <color name="status_scheduled">#ff9900</color>
+    <color name="status_canceled">#e60000</color>
+    <color name="status_invalid">#777</color>
+    <color name="bucket_active">#ffaa00</color>
+    <color name="green_dark">#078130</color>
+
+    <color name="tans_dark">#66000000</color>
+    <color name="trans_white">#ddffffff</color>
+    <color name="trans_white_2">#AE3F51B5</color>
+    <color name="background">#3D4883</color>
+    <color name="card_bg_dark">#FF424242</color>
+    <color name="textPrimary">#fff</color>
+    <color name="textSecondary">#787878</color>
+    <color name="t_gray">#77777777</color>
+
+</resources>

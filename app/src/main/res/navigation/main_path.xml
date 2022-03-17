@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/test_path"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="sg.mirobotic.teminavigation.ui.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_locationsFragment"
+            app:destination="@id/locationsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_pathListFragment"
+            app:destination="@id/pathListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationsFragment"
+        android:name="sg.mirobotic.teminavigation.ui.fragments.LocationsFragment"
+        android:label="fragment_locations"
+        tools:layout="@layout/fragment_locations" />
+    <fragment
+        android:id="@+id/saveLocationFragment"
+        android:name="sg.mirobotic.teminavigation.ui.fragments.SaveLocationFragment"
+        android:label="fragment_save_location"
+        tools:layout="@layout/fragment_save_location" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="sg.mirobotic.teminavigation.ui.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_saveLocationFragment"
+            app:destination="@id/saveLocationFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_createPathFragment"
+            app:destination="@id/createPathFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_pathSettingsFragment"
+            app:destination="@id/pathSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPathFragment"
+        android:name="sg.mirobotic.teminavigation.ui.fragments.CreatePathFragment"
+        android:label="fragment_create_path"
+        tools:layout="@layout/fragment_create_path" />
+
+    <fragment
+        android:id="@+id/editPathFragment"
+        android:name="sg.mirobotic.teminavigation.ui.fragments.EditPathFragment"
+        android:label="fragment_edit_path"
+        tools:layout="@layout/fragment_edit_path" >
+        <argument
+            android:name="path"
+            app:argType="sg.mirobotic.teminavigation.data.Path" />
+    </fragment>
+    <fragment
+        android:id="@+id/pathNavigationFragment"
+        android:name="sg.mirobotic.teminavigation.ui.fragments.PathNavigationFragment"
+        android:label="fragment_path_navigation"
+        tools:layout="@layout/fragment_path_navigation" >
+        <argument
+            android:name="path"
+            app:argType="sg.mirobotic.teminavigation.data.Path" />
+    </fragment>
+    <fragment
+        android:id="@+id/pathSettingsFragment"
+        android:name="sg.mirobotic.teminavigation.ui.fragments.PathSettingsFragment"
+        android:label="fragment_path_settings"
+        tools:layout="@layout/fragment_path_settings" >
+        <action
+            android:id="@+id/action_pathSettingsFragment_to_editPathFragment"
+            app:destination="@id/editPathFragment" />
+        <action
+            android:id="@+id/action_pathSettingsFragment_to_pathNavigationFragment"
+            app:destination="@id/pathNavigationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pathListFragment"
+        android:name="sg.mirobotic.teminavigation.ui.fragments.PathListFragment"
+        android:label="fragment_path_list"
+        tools:layout="@layout/fragment_path_list" >
+        <action
+            android:id="@+id/action_pathListFragment_to_pathNavigationFragment"
+            app:destination="@id/pathNavigationFragment" />
+    </fragment>
+
+</navigation>

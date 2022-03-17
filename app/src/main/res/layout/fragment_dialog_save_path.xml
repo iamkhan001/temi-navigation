@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/create_table_window"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/space_large"
+    android:background="@drawable/border_window"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:padding="@dimen/space_normal"
+        android:textSize="@dimen/text_title"
+        android:text="@string/save_path"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:drawableEndCompat="@drawable/ic_close" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconTint="@color/white"
+        android:hint="@string/path_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etName"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/btnSave"
+        android:background="@drawable/button_primary"
+        android:textColor="@color/white"
+        android:text="@string/save"
+        android:layout_marginTop="@dimen/space_xl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.SaveLocationFragment">
+
+    <View
+        android:background="@drawable/bg_splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <View
+        android:background="@color/tans_dark"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/imgBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_large"
+        android:src="@drawable/ic_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/text_head"
+        android:textColor="@color/white"
+        android:layout_marginStart="@dimen/space_large"
+        android:text="@string/save_location"
+        app:layout_constraintBottom_toBottomOf="@id/imgBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/viewSteps"
+        app:layout_constraintTop_toBottomOf="@id/imgBack"
+        android:layout_marginStart="@dimen/size_normal"
+        android:layout_marginEnd="@dimen/size_normal"
+        android:layout_marginTop="@dimen/size_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/step_1"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_head"
+            android:textColor="@color/white"
+            android:gravity="center_horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="@string/step_2"
+            android:textSize="@dimen/text_head"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:gravity="center_horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/viewSteps"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingBottom="60dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:baselineAligned="false">
+
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/btnFollow"
+                android:text="@string/follow_me"
+                android:gravity="center"
+                android:drawablePadding="@dimen/space_large"
+                android:padding="@dimen/space_xl"
+                android:layout_width="@dimen/btn_width"
+                android:layout_height="@dimen/btn_height"
+                android:textSize="@dimen/text_head"
+                android:background="@drawable/border_btn"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                app:drawableTopCompat="@drawable/ic_cursor" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/btnSave"
+                android:text="@string/save_location"
+                android:gravity="center"
+                android:background="@drawable/border_btn"
+                android:textColor="@color/white"
+                android:drawablePadding="@dimen/space_large"
+                android:padding="@dimen/space_xl"
+                android:textSize="@dimen/text_head"
+                android:layout_width="@dimen/btn_width"
+                android:layout_height="@dimen/btn_height"
+                android:layout_gravity="center"
+                app:drawableTopCompat="@drawable/ic_marker" />
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
