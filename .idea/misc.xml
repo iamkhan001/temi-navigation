@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/bg_arrow.xml" value="0.1585" />
+        <entry key="app/src/main/res/drawable/ic_baseline_access_alarm_24.xml" value="0.1755" />
         <entry key="app/src/main/res/drawable/ic_map.xml" value="0.1585" />
         <entry key="app/src/main/res/layout-land/fragment_home.xml" value="0.2" />
         <entry key="app/src/main/res/layout-sw600dp/fragment_home.xml" value="0.28203125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12" />
+        <entry key="app/src/main/res/layout/fragment_alarms.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_alerm_add.xml" value="0.20241120089792183" />
         <entry key="app/src/main/res/layout/fragment_create_path.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_dialog_save_location.xml" value="0.18802083333333333" />
@@ -22,6 +24,7 @@
         <entry key="app/src/main/res/layout/fragment_save_location.xml" value="0.18802083333333333" />
         <entry key="app/src/main/res/layout/fragment_select_location.xml" value="0.18802083333333333" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.12" />
+        <entry key="app/src/main/res/layout/item_alarm.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_home.xml" value="0.18802083333333333" />
         <entry key="app/src/main/res/layout/item_location.xml" value="0.18802083333333333" />
         <entry key="app/src/main/res/layout/item_location_nav.xml" value="0.18802083333333333" />
@@ -29,6 +32,7 @@
         <entry key="app/src/main/res/layout/item_path.xml" value="0.18802083333333333" />
         <entry key="app/src/main/res/layout/item_setting_option.xml" value="0.18802083333333333" />
         <entry key="app/src/main/res/layout/item_text.xml" value="0.18802083333333333" />
+        <entry key="app/src/main/res/layout/row_list_alarm.xml" value="0.2664930555555556" />
         <entry key="app/src/main/res/layout/view_toolbar.xml" value="0.18802083333333333" />
       </map>
     </option>

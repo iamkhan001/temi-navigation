@@ -1,25 +1,24 @@
 package sg.mirobotic.teminavigation.ui.fragments
 
 import android.app.AlarmManager
-import android.app.PendingIntent
 import android.app.TimePickerDialog
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import com.tomergoldst.timekeeper.core.TimeKeeper
+import com.tomergoldst.timekeeper.model.Alarm
 import sg.mirobotic.teminavigation.R
-import sg.mirobotic.teminavigation.config.AlarmBroadcastReceiver
 import sg.mirobotic.teminavigation.databinding.FragmentAlermAddBinding
-import sg.mirobotic.teminavigation.databinding.FragmentSelectLocationBinding
 import sg.mirobotic.teminavigation.ui.adapters.ItemClickListener
-import sg.mirobotic.teminavigation.ui.adapters.LocationsAdapter
 import sg.mirobotic.teminavigation.ui.viewModels.MainViewModel
 import sg.mirobotic.teminavigation.utils.MyMessage
+import sg.mirobotic.teminavigation.utils.getRandomString
 import java.util.*
+import kotlin.math.min
 
 class ScheduleTaskDialogFragment(private val itemClickListener: ItemClickListener<TemiTask>): DialogFragment() {
 
@@ -45,6 +44,7 @@ class ScheduleTaskDialogFragment(private val itemClickListener: ItemClickListene
         val onLocationSelectListener = object : ItemClickListener<String> {
             override fun onItemClick(obj: String) {
                 location = obj
+                binding.location.text = obj
             }
         }
 
@@ -81,6 +81,7 @@ class ScheduleTaskDialogFragment(private val itemClickListener: ItemClickListene
                 return@setOnClickListener
             }
 
+            /*
             alarmManager.set(
                 AlarmManager.RTC_WAKEUP,
                 Calendar.getInstance().apply {
@@ -98,8 +99,23 @@ class ScheduleTaskDialogFragment(private val itemClickListener: ItemClickListene
                     PendingIntent.FLAG_CANCEL_CURRENT
                 )
             )
+             */
+
+            val calendar = Calendar.getInstance()
+            calendar.set(Calendar.HOUR_OF_DAY, hour)
+            calendar.set(Calendar.MINUTE, minute)
+            calendar.set(Calendar.SECOND, 0)
+            calendar.set(Calendar.MILLISECOND, 0)
+
+            val alarm = Alarm(getRandomString(7), calendar.timeInMillis)
+            alarm.isPersist = true
+            alarm.payload = location
+            TimeKeeper.setAlarm(alarm)
+
+            mainViewModel.scheduleAlarm(alarm)
 
             itemClickListener.onItemClick(TemiTask(location, time))
+            dismissAllowingStateLoss()
         }
 
         binding.cancel.setOnClickListener { dismiss() }

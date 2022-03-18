@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sg.mirobotic.teminavigation">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="false"
@@ -9,6 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".config.MyApplication"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".ui.activities.MainActivity"
@@ -20,8 +24,13 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".config.AlarmBroadcastReceiver"
-            android:exported="true"/>
+        <receiver
+            android:name=".config.AlarmBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.tomergoldst.timekeeper.intent_action.RECEIVE_ALARMS" />
+            </intent-filter>
+        </receiver>
 
         <meta-data
             android:name="com.robotemi.sdk.metadata.SKILL"

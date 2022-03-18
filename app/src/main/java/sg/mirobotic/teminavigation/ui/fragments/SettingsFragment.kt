@@ -80,11 +80,7 @@ class SettingsFragment : Fragment() {
 
     }
 
-    private val onScheduleTaskListener = object : ItemClickListener<TemiTask> {
-        override fun onItemClick(obj: TemiTask) {
-            MyMessage.showToast(context, "${obj.location} - ${obj.time}")
-        }
-    }
+
 
     private fun navigate(obj: TextIcon) {
 
@@ -99,8 +95,7 @@ class SettingsFragment : Fragment() {
                 findNavController().navigate(R.id.action_settingsFragment_to_createPathFragment)
             }
             getString(R.string.schedule_location) -> {
-                val scheduleTaskDialogFragment = ScheduleTaskDialogFragment(onScheduleTaskListener)
-                scheduleTaskDialogFragment.show(childFragmentManager, "Task")
+
             }
         }
 

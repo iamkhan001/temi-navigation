@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/cvMain"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true"
+    android:layout_margin="@dimen/space_small"
+    app:cardBackgroundColor="@color/trans_white_2"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_xl">
+
+        <ImageView
+            android:id="@+id/imgIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="@dimen/space_normal"
+            android:src="@drawable/ic_baseline_access_alarm_24"
+            android:layout_width="@dimen/setting_icon_size"
+            android:layout_height="@dimen/setting_icon_size"/>
+
+        <ImageView
+            android:id="@+id/imgDelete"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/space_normal"
+            android:src="@drawable/ic_delete"
+            android:layout_width="@dimen/setting_icon_size"
+            android:layout_height="@dimen/setting_icon_size"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:text="@string/app_name"
+            android:textSize="@dimen/text_n"
+            android:textColor="@color/white"
+            android:layout_marginStart="@dimen/space_sm"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgIcon"
+            android:maxLines="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:text="@string/app_name"
+            android:textSize="@dimen/text_head"
+            android:textColor="@color/white"
+            android:layout_marginStart="@dimen/space_sm"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            app:layout_constraintStart_toEndOf="@id/imgIcon"
+            android:maxLines="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

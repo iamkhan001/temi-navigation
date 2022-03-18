@@ -2,8 +2,12 @@ package sg.mirobotic.teminavigation.ui.viewModels
 
 import android.content.Context
 import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.robotemi.sdk.Robot
+import com.tomergoldst.timekeeper.core.TimeKeeper
+import com.tomergoldst.timekeeper.model.Alarm
 import kotlinx.coroutines.launch
 import sg.mirobotic.teminavigation.config.DataProcessor
 import sg.mirobotic.teminavigation.config.UserDataProvider
@@ -33,6 +37,7 @@ class MainViewModel : ViewModel() {
 
     fun init(context: Context, robot: Robot?) {
         this.robot = robot
+        TimeKeeper.initialize(context)
         dataProcessor = DataProcessor(context)
         userDataProvider = UserDataProvider(context)
     }
@@ -100,4 +105,26 @@ class MainViewModel : ViewModel() {
 
 
     }
+
+    val alarms = MutableLiveData<List<Alarm>?>()
+
+    fun loadAlarms() {
+        alarms.postValue(TimeKeeper.getAlarms())
+    }
+
+    fun removeAlarm(alarm: Alarm) {
+        TimeKeeper.cancelAlarm(alarm.id)
+        loadAlarms()
+    }
+
+    fun clearAlarms(){
+        TimeKeeper.clear()
+        alarms.postValue(null)
+    }
+
+    fun scheduleAlarm(alarm: Alarm) {
+        TimeKeeper.setAlarm(alarm)
+        loadAlarms()
+    }
+
 }

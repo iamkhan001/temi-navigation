@@ -76,6 +76,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_ver"
 
     implementation(name:'temi-sdk', ext:'aar')
+    implementation(name:'timekeeper-debug', ext:'aar')
     implementation(name:'dialog_dark', ext:'aar')
     implementation 'org.greenrobot:eventbus:3.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
