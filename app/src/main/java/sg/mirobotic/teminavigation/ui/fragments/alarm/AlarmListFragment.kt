@@ -2,6 +2,7 @@ package sg.mirobotic.teminavigation.ui.fragments.alarm
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,24 +65,27 @@ class AlarmListFragment: Fragment() {
         }
 
         binding.btnRemove.setOnClickListener {
-            mainViewModel.clearAlarms()
+            mainViewModel.clearAlarms(requireContext())
         }
 
         val onAlarmOptionSelectListener = object : AlarmsListAdapter.OnAlarmOptionSelectListener {
             override fun onDelete(alarm: Alarm) {
-                mainViewModel.removeAlarm(alarm)
+                mainViewModel.removeAlarm(requireContext(), alarm)
             }
         }
 
         val alarmsListAdapter = AlarmsListAdapter(onAlarmOptionSelectListener)
 
         mainViewModel.alarms.observe(viewLifecycleOwner){
+            Log.e("Alarms","Alarms ${it?.size}")
             if (it.isNullOrEmpty()) {
                 alarmsListAdapter.clearData()
                 return@observe
             }
             alarmsListAdapter.setData(it)
         }
+
+        binding.rvList.adapter = alarmsListAdapter
 
     }
 

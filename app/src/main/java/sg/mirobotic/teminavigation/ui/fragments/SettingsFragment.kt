@@ -95,7 +95,7 @@ class SettingsFragment : Fragment() {
                 findNavController().navigate(R.id.action_settingsFragment_to_createPathFragment)
             }
             getString(R.string.schedule_location) -> {
-
+                findNavController().navigate(R.id.action_settingsFragment_to_alarmListFragment)
             }
         }
 

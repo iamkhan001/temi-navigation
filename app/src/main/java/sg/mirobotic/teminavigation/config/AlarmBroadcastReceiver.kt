@@ -10,10 +10,7 @@ import com.tomergoldst.timekeeper.model.Alarm
 
 class AlarmBroadcastReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
-//        val location = intent?.getStringExtra("location") ?: ""
-//        val time = intent?.getStringExtra("time") ?: ""
-//
-//        Log.e("Alarm", "Location >> $location / $time")
+
 
         /*
           Extract alarms from intent
@@ -23,13 +20,26 @@ class AlarmBroadcastReceiver : BroadcastReceiver() {
 
         Log.e("Alarm", "Alarm List >> ${alarms?.size}")
 
-        alarms?.let {
-            if (it.isEmpty()){
-                Log.e("Alarm", "Alarms List IS EMPTY >> ${it.size}")
-                return@let
-            }
-            goToLocation(it[0])
+
+        if (alarms.isNullOrEmpty()) {
+            val location = intent?.getStringExtra("location") ?: ""
+            val time = intent?.getStringExtra("time") ?: ""
+            val robot = Robot.getInstance()
+            val ttsRequest = TtsRequest.create("Going to $location", false)
+            robot.speak(ttsRequest)
+            robot.goTo(location)
+            Log.e("Alarm", "Location >> $location / $time")
+        }else {
+           alarms.let {
+               if (it.isEmpty()){
+                   Log.e("Alarm", "Alarms List IS EMPTY >> ${it.size}")
+                   return@let
+               }
+               goToLocation(it[0])
+               return@let
+           }
         }
+
 
     }
 

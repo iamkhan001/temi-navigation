@@ -1,8 +1,10 @@
 package sg.mirobotic.teminavigation.ui.fragments
 
 import android.app.AlarmManager
+import android.app.PendingIntent
 import android.app.TimePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import androidx.fragment.app.activityViewModels
 import com.tomergoldst.timekeeper.core.TimeKeeper
 import com.tomergoldst.timekeeper.model.Alarm
 import sg.mirobotic.teminavigation.R
+import sg.mirobotic.teminavigation.config.AlarmBroadcastReceiver
 import sg.mirobotic.teminavigation.databinding.FragmentAlermAddBinding
 import sg.mirobotic.teminavigation.ui.adapters.ItemClickListener
 import sg.mirobotic.teminavigation.ui.viewModels.MainViewModel
@@ -81,7 +84,6 @@ class ScheduleTaskDialogFragment(private val itemClickListener: ItemClickListene
                 return@setOnClickListener
             }
 
-            /*
             alarmManager.set(
                 AlarmManager.RTC_WAKEUP,
                 Calendar.getInstance().apply {
@@ -94,12 +96,11 @@ class ScheduleTaskDialogFragment(private val itemClickListener: ItemClickListene
                     0,
                     Intent(requireContext(), AlarmBroadcastReceiver::class.java).apply {
                         putExtra("time", time)
-                        putExtra("location", location)
+                        putExtra("payload", location)
                     },
                     PendingIntent.FLAG_CANCEL_CURRENT
                 )
             )
-             */
 
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hour)
@@ -107,10 +108,9 @@ class ScheduleTaskDialogFragment(private val itemClickListener: ItemClickListene
             calendar.set(Calendar.SECOND, 0)
             calendar.set(Calendar.MILLISECOND, 0)
 
-            val alarm = Alarm(getRandomString(7), calendar.timeInMillis)
+            val alarm = Alarm(getRandomString(4), calendar.timeInMillis)
             alarm.isPersist = true
             alarm.payload = location
-            TimeKeeper.setAlarm(alarm)
 
             mainViewModel.scheduleAlarm(alarm)
 

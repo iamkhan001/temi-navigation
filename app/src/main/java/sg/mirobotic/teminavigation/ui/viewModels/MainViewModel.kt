@@ -1,7 +1,11 @@
 package sg.mirobotic.teminavigation.ui.viewModels
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,9 +13,11 @@ import com.robotemi.sdk.Robot
 import com.tomergoldst.timekeeper.core.TimeKeeper
 import com.tomergoldst.timekeeper.model.Alarm
 import kotlinx.coroutines.launch
+import sg.mirobotic.teminavigation.config.AlarmBroadcastReceiver
 import sg.mirobotic.teminavigation.config.DataProcessor
 import sg.mirobotic.teminavigation.config.UserDataProvider
 import sg.mirobotic.teminavigation.data.Path
+
 
 class MainViewModel : ViewModel() {
 
@@ -112,12 +118,40 @@ class MainViewModel : ViewModel() {
         alarms.postValue(TimeKeeper.getAlarms())
     }
 
-    fun removeAlarm(alarm: Alarm) {
+    fun removeAlarm(context: Context, alarm: Alarm) {
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager?
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            alarm.uid.toInt(),
+            Intent(
+                context,
+                AlarmBroadcastReceiver::class.java
+            ),
+            0
+        )
+
+        alarmManager?.cancel(pendingIntent)
+
+        Toast.makeText(
+            context,
+            "Alarm Cancelled - ${alarm.payload}",
+            Toast.LENGTH_SHORT
+        ).show()
+
         TimeKeeper.cancelAlarm(alarm.id)
         loadAlarms()
     }
 
-    fun clearAlarms(){
+    fun clearAlarms(context: Context){
+
+        val updateServiceIntent = Intent(context, AlarmBroadcastReceiver::class.java)
+        val pendingUpdateIntent = PendingIntent.getService(context, 0, updateServiceIntent, 0)
+        try {
+            (context.getSystemService(Context.ALARM_SERVICE) as AlarmManager).cancel(pendingUpdateIntent)
+        } catch (e: Exception) {
+            Log.e(TAG, "AlarmManager update was not canceled. $e")
+        }
+
         TimeKeeper.clear()
         alarms.postValue(null)
     }
