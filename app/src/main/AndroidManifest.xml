@@ -20,6 +20,9 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".config.AlarmBroadcastReceiver"
+            android:exported="true"/>
+
         <meta-data
             android:name="com.robotemi.sdk.metadata.SKILL"
             android:value="@string/app_name" />

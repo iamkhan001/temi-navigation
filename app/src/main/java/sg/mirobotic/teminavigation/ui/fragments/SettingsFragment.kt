@@ -15,6 +15,7 @@ import sg.mirobotic.teminavigation.databinding.FragmentSettingsBinding
 import sg.mirobotic.teminavigation.ui.adapters.ItemClickListener
 import sg.mirobotic.teminavigation.ui.adapters.SettingAdapter
 import sg.mirobotic.teminavigation.ui.viewModels.MainViewModel
+import sg.mirobotic.teminavigation.utils.MyMessage
 
 class SettingsFragment : Fragment() {
 
@@ -41,6 +42,7 @@ class SettingsFragment : Fragment() {
         list.add(TextIcon(R.drawable.ic_map_2, getString(R.string.saved_path)))
         list.add(TextIcon(R.drawable.ic_marker, getString(R.string.add_location)))
         list.add(TextIcon(R.drawable.ic_map, getString(R.string.create_path)))
+        list.add(TextIcon(R.drawable.ic_ai, getString(R.string.schedule_location)))
 
         Log.e("settings", "list ${list.size}")
 
@@ -78,6 +80,12 @@ class SettingsFragment : Fragment() {
 
     }
 
+    private val onScheduleTaskListener = object : ItemClickListener<TemiTask> {
+        override fun onItemClick(obj: TemiTask) {
+            MyMessage.showToast(context, "${obj.location} - ${obj.time}")
+        }
+    }
+
     private fun navigate(obj: TextIcon) {
 
         when(obj.name) {
@@ -89,6 +97,10 @@ class SettingsFragment : Fragment() {
             }
             getString(R.string.create_path) -> {
                 findNavController().navigate(R.id.action_settingsFragment_to_createPathFragment)
+            }
+            getString(R.string.schedule_location) -> {
+                val scheduleTaskDialogFragment = ScheduleTaskDialogFragment(onScheduleTaskListener)
+                scheduleTaskDialogFragment.show(childFragmentManager, "Task")
             }
         }
 

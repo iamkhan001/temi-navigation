@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="@dimen/space_m"
+    android:layout_width="@dimen/task_w"
+    android:layout_height="@dimen/task_h">
+
+    <TextView
+        android:id="@+id/titleTile"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="@dimen/text_head"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/space_m"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Schedule go to location" />
+
+    <TextView
+        android:id="@+id/locationTitle"
+        android:gravity="center_vertical"
+        android:textColor="@color/textPrimary"
+        android:layout_marginTop="@dimen/space_s"
+        android:text="@string/select_location"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_s"/>
+
+    <TextView
+        android:id="@+id/location"
+        android:textSize="@dimen/text_n"
+        android:gravity="center_vertical"
+        android:paddingVertical="@dimen/space_normal"
+        android:textColor="@color/yellow"
+        android:layout_marginTop="@dimen/space_s"
+        android:text="@string/dash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/titleTitle"
+        android:gravity="center_vertical"
+        android:textColor="@color/textPrimary"
+        android:layout_marginTop="@dimen/space_large"
+        android:text="@string/select_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_s"/>
+
+    <TextView
+        android:id="@+id/time"
+        android:textSize="@dimen/text_n"
+        android:gravity="center_vertical"
+        android:textColor="@color/yellow"
+        android:paddingVertical="@dimen/space_normal"
+        android:layout_marginTop="@dimen/space_s"
+        android:text="@string/dash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:layout_marginEnd="@dimen/space_s"
+            android:background="@drawable/button_lite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/save"
+            android:layout_marginStart="@dimen/space_s"
+            android:background="@drawable/button_blue"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="Save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

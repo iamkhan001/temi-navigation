@@ -85,6 +85,10 @@
     <string name="set_password">Set password</string>
     <string name="set_admin_password">Set admin password</string>
     <string name="change_password">Change Password</string>
+    <string name="select_time">Select Time</string>
+    <string name="time">hh:mm a</string>
+    <string name="dash">------------</string>
+    <string name="schedule_location">Schedule Location</string>
 
     <string-array name="connectivity_entries">
         <item>Nearby Connections API</item>

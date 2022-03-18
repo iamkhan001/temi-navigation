@@ -57,4 +57,9 @@
     <dimen name="option_width">500dp</dimen>
     <dimen name="option_height">350dp</dimen>
     <dimen name="login_btn_width">250dp</dimen>
+    <dimen name="space_m">8dp</dimen>
+    <dimen name="space_s">4dp</dimen>
+    <dimen name="size_s">33dp</dimen>
+    <dimen name="task_w">400dp</dimen>
+    <dimen name="task_h">400dp</dimen>
 </resources>
