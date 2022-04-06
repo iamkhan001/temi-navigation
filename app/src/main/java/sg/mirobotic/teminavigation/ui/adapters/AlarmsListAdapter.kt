@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tomergoldst.timekeeper.model.Alarm
 import sg.mirobotic.teminavigation.databinding.ItemAlarmBinding
+import sg.mirobotic.teminavigation.utils.toTime
 
 class AlarmsListAdapter(private val onAlarmOptionSelectListener: OnAlarmOptionSelectListener): RecyclerView.Adapter<AlarmsListAdapter.MyViewHolder>() {
 
@@ -37,7 +38,7 @@ class AlarmsListAdapter(private val onAlarmOptionSelectListener: OnAlarmOptionSe
         val alarm = list[position]
 
         holder.binding.tvName.text = alarm.payload
-        holder.binding.tvTime.text = alarm.readableDate
+        holder.binding.tvTime.text = alarm.time.toTime()
 
         holder.binding.imgDelete.setOnClickListener { onAlarmOptionSelectListener.onDelete(alarm) }
     }

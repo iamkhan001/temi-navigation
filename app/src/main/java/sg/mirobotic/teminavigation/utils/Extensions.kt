@@ -15,3 +15,8 @@ fun Date.getTimeNow(): Long {
     val data = format.format(this)
     return format.parse(data)!!.time
 }
+
+fun Long.toTime(): String {
+    val format = SimpleDateFormat("dd MMM yy hh:mm a")
+    return format.format(Date(this))
+}
