@@ -7,6 +7,8 @@ import android.util.Log
 import com.robotemi.sdk.Robot
 import com.robotemi.sdk.TtsRequest
 import com.tomergoldst.timekeeper.model.Alarm
+import sg.mirobotic.teminavigation.utils.getTimeNow
+import java.util.*
 
 class AlarmBroadcastReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -17,8 +19,9 @@ class AlarmBroadcastReceiver : BroadcastReceiver() {
          */
 
         val alarms: List<Alarm>? = intent?.getParcelableArrayListExtra<Alarm>("alarms") as List<Alarm>?
+        val time = Date().getTimeNow()
 
-        Log.e("Alarm", "Alarm List >> ${alarms?.size}")
+        Log.e("Alarm", "Alarm List >> $time ${alarms?.size}")
 
 
         if (alarms.isNullOrEmpty()) {
@@ -35,12 +38,15 @@ class AlarmBroadcastReceiver : BroadcastReceiver() {
                    Log.e("Alarm", "Alarms List IS EMPTY >> ${it.size}")
                    return@let
                }
-               goToLocation(it[0])
-               return@let
+               for (alarm in it) {
+                   Log.e("Alarm", "compare > ${alarm.payload} = ${alarm.time} / $time")
+                   if (alarm.time == time) {
+                       goToLocation(it[0])
+                       return@let
+                   }
+               }
            }
         }
-
-
     }
 
     private fun goToLocation(alarm: Alarm) {
